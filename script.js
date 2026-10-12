@@ -272,3 +272,84 @@ document.addEventListener('DOMContentLoaded', () => {
     portrait.classList.add('no-photo');
   }
 });
+
+/* ===== RETRO ARCADE MUSIC ===== */
+let audioCtx;
+let musicTimer;
+let musicOn = false;
+let noteIndex = 0;
+
+const melody = [
+  [659, 120], [659, 120], [659, 240],
+  [523, 120], [659, 120], [784, 240],
+  [392, 240], [523, 240], [392, 240],
+  [330, 240], [440, 120], [494, 120],
+  [466, 120], [440, 120], [392, 160],
+  [659, 160], [784, 160], [880, 240],
+  [698, 120], [784, 120], [659, 240]
+];
+
+function playNote(freq, duration) {
+  if (!audioCtx || !musicOn) return;
+
+  const osc = audioCtx.createOscillator();
+  const gain = audioCtx.createGain();
+
+  osc.type = "square";
+  osc.frequency.value = freq;
+
+  gain.gain.setValueAtTime(0.035, audioCtx.currentTime);
+  gain.gain.exponentialRampToValueAtTime(
+    0.001,
+    audioCtx.currentTime + duration / 1000
+  );
+
+  osc.connect(gain);
+  gain.connect(audioCtx.destination);
+
+  osc.start();
+  osc.stop(audioCtx.currentTime + duration / 1000);
+}
+
+function startRetroMusic() {
+  if (musicOn) return;
+
+  audioCtx ||= new (window.AudioContext ||
+    window.webkitAudioContext)();
+
+  audioCtx.resume();
+  musicOn = true;
+  noteIndex = 0;
+
+  function nextNote() {
+    if (!musicOn) return;
+
+    const [freq, duration] = melody[noteIndex];
+    playNote(freq, duration);
+
+    noteIndex = (noteIndex + 1) % melody.length;
+    musicTimer = setTimeout(nextNote, duration * 1.15);
+  }
+
+  nextNote();
+}
+
+function stopRetroMusic() {
+  musicOn = false;
+  clearTimeout(musicTimer);
+}
+
+/* Connect to your existing sound button */
+const soundButton = document.querySelector("#sound-toggle");
+
+if (soundButton) {
+  soundButton.addEventListener("click", () => {
+    if (musicOn) {
+      stopRetroMusic();
+      soundButton.textContent = "🔇 SOUND OFF";
+    } else {
+      startRetroMusic();
+      soundButton.textContent = "🔊 SOUND ON";
+    }
+  });
+}
