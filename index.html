@@ -1,705 +1,648 @@
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#100d22">
-<title>Louigie C. Mutya | Arcade Portfolio</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090b18">
+  <meta name="description" content="Louigie C. Mutya — Computer Engineering student portfolio">
+  <title>PLAYER ONE // Louigie Mutya</title>
 
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Mono:wght@400;700&display=swap');
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-:root {
-  --bg: #100d22;
-  --panel: #1b1735;
-  --panel2: #241e46;
-  --ink: #f8f4ff;
-  --muted: #b8b0d8;
-  --pink: #ff62c8;
-  --cyan: #63f5ff;
-  --yellow: #ffe66d;
-  --green: #8cff9b;
-  --line: #514777;
-}
-
-* {
-  box-sizing: border-box;
-  scroll-behavior: smooth;
-}
-
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--ink);
-  font: 16px/1.7 'Space Mono', monospace;
-  background-image:
-    linear-gradient(#63f5ff09 1px, transparent 1px),
-    linear-gradient(90deg, #63f5ff09 1px, transparent 1px);
-  background-size: 24px 24px;
-}
-
-a {
-  color: var(--cyan);
-  text-decoration: none;
-}
-
-a:hover {
-  color: var(--yellow);
-}
-
-header {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  background: #100d22f2;
-  border-bottom: 2px solid var(--line);
-}
-
-.nav {
-  max-width: 1120px;
-  margin: auto;
-  padding: 14px 22px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 16px;
-}
-
-.logo {
-  font: 12px/1.8 'Press Start 2P', monospace;
-  color: var(--yellow);
-}
-
-nav {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-  font-size: 12px;
-}
-
-nav a {
-  color: var(--ink);
-}
-
-main {
-  max-width: 1120px;
-  margin: auto;
-  padding: 28px 22px 70px;
-}
-
-section {
-  padding: 52px 0;
-  scroll-margin-top: 80px;
-}
-
-.hero {
-  min-height: 75vh;
-  display: grid;
-  grid-template-columns: 1.15fr .85fr;
-  gap: 50px;
-  align-items: center;
-}
-
-.eyebrow {
-  color: var(--green);
-  font-size: 12px;
-  letter-spacing: 2px;
-}
-
-h1, h2, h3 {
-  line-height: 1.45;
-  margin-top: 0;
-}
-
-h1 {
-  font: clamp(25px, 4vw, 45px)/1.5 'Press Start 2P', monospace;
-  margin: 18px 0;
-}
-
-h1 span {
-  color: var(--pink);
-}
-
-h2 {
-  font: clamp(17px, 2.4vw, 24px)/1.5 'Press Start 2P', monospace;
-  color: var(--cyan);
-  margin-bottom: 25px;
-}
-
-h3 {
-  color: var(--yellow);
-  font-size: 15px;
-}
-
-.lead {
-  color: var(--muted);
-  max-width: 650px;
-}
-
-.pixel-card, .panel {
-  background: var(--panel);
-  border: 2px solid var(--line);
-  box-shadow:
-    0 0 0 3px #0b0918,
-    0 0 0 5px var(--cyan),
-    8px 8px 0 #080713;
-}
-
-.pixel-card {
-  padding: 12px;
-  max-width: 350px;
-  margin: auto;
-  transform: rotate(1deg);
-}
-
-/* YOUR PHOTO IS EMBEDDED BELOW */
-.profile-photo {
-  display: block;
-  width: 100%;
-  height: 360px;
-  object-fit: cover;
-  object-position: center top;
-  background: #fff;
-  border: 2px solid var(--cyan);
-}
-
-.pixel-card-label {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  margin-top: 10px;
-  font: 10px 'Press Start 2P', monospace;
-  color: var(--yellow);
-}
-
-.status-dot {
-  width: 10px;
-  height: 10px;
-  background: var(--green);
-  display: inline-block;
-  box-shadow: 0 0 10px var(--green);
-}
-
-.buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 24px;
-}
-
-.btn, button {
-  font: 700 12px 'Space Mono', monospace;
-  color: var(--ink);
-  background: var(--panel2);
-  border: 2px solid var(--cyan);
-  padding: 12px 15px;
-  cursor: pointer;
-  box-shadow: 4px 4px 0 #080713;
-}
-
-.btn:hover, button:hover {
-  background: var(--cyan);
-  color: var(--bg);
-}
-
-.panel {
-  padding: 22px;
-}
-
-.panel p, .panel li {
-  color: var(--muted);
-}
-
-.panel ul {
-  padding-left: 20px;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
-}
-
-.tags {
-  display: flex;
-  gap: 9px;
-  flex-wrap: wrap;
-}
-
-.tag {
-  border: 1px solid var(--pink);
-  padding: 5px 9px;
-  color: var(--pink);
-  font-size: 12px;
-  background: #ff62c811;
-}
-
-.timeline {
-  border-left: 3px solid var(--pink);
-  padding-left: 20px;
-  margin-left: 8px;
-}
-
-.timeline-item {
-  position: relative;
-  margin: 0 0 22px;
-}
-
-.timeline-item:before {
-  content: "";
-  position: absolute;
-  left: -28px;
-  top: 8px;
-  width: 11px;
-  height: 11px;
-  background: var(--yellow);
-  border: 2px solid var(--bg);
-}
-
-.project-card {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.project-card p {
-  flex: 1;
-}
-
-.contact-list {
-  display: grid;
-  gap: 12px;
-}
-
-.contact-row {
-  padding: 12px;
-  border: 1px solid var(--line);
-  background: var(--panel2);
-  overflow-wrap: anywhere;
-}
-
-.small {
-  font-size: 12px;
-  color: var(--muted);
-}
-
-footer {
-  text-align: center;
-  padding: 24px;
-  border-top: 2px solid var(--line);
-  color: var(--muted);
-  font-size: 12px;
-}
-
-.music-control {
-  position: fixed;
-  right: 16px;
-  bottom: 16px;
-  z-index: 20;
-  border-color: var(--pink);
-  background: var(--panel);
-}
-
-.blink {
-  animation: blink 1.2s steps(2, start) infinite;
-}
-
-@keyframes blink {
-  to {
-    visibility: hidden;
-  }
-}
-
-.slime {
-  position: fixed;
-  left: 15px;
-  bottom: 13px;
-  width: 25px;
-  height: 18px;
-  background: #6bff8a;
-  border: 2px solid #1b8e54;
-  border-radius: 12px 12px 4px 4px;
-  z-index: 5;
-}
-
-.slime:before, .slime:after {
-  content: "";
-  position: absolute;
-  top: 5px;
-  width: 3px;
-  height: 5px;
-  background: #12252a;
-}
-
-.slime:before {
-  left: 6px;
-}
-
-.slime:after {
-  right: 6px;
-}
-
-@media (max-width: 760px) {
-  .hero {
-    grid-template-columns: 1fr;
-    gap: 34px;
-    text-align: center;
-  }
-
-  .hero .buttons {
-    justify-content: center;
-  }
-
-  .grid {
-    grid-template-columns: 1fr;
-  }
-
-  .nav {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
-  nav {
-    gap: 10px;
-  }
-
-  .profile-photo {
-    height: 320px;
-  }
-
-  section {
-    padding: 40px 0;
-  }
-}
-</style>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
 
 <body>
+  <div class="scanlines" aria-hidden="true"></div>
+  <div class="cursor-glow" aria-hidden="true"></div>
 
-<header>
-  <div class="nav">
-    <a class="logo" href="#home">LOUIGIE.EXE</a>
-
-    <nav>
-      <a href="#about">About</a>
-      <a href="#education">Education</a>
-      <a href="#interests">Interests</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </div>
-</header>
-
-<main>
-
-<!-- HOME / HERO -->
-<section class="hero" id="home">
-
-  <div>
-    <div class="eyebrow">PLAYER 1 // PORTFOLIO LOADED</div>
-
-    <h1>
-      HI, I'M <span>LOUIGIE</span><br>
-      C. MUTYA<span class="blink">_</span>
-    </h1>
-
-    <p class="lead">
-      A Computer Engineering student who enjoys technology,
-      programming, and building projects. Welcome to my little
-      corner of the internet—arcade style!
-    </p>
-
-    <div class="buttons">
-      <a class="btn" href="#projects">VIEW PROJECTS ▶</a>
-      <a class="btn" href="#contact">CONTACT ME</a>
+  <!-- ARCADE LOADING SCREEN -->
+  <div class="boot-screen" id="boot-screen" aria-label="Loading portfolio">
+    <div class="boot-logo">LOUIGIE.EXE</div>
+    <div class="boot-line">
+      <span id="boot-progress"></span>
     </div>
-
-    <p class="small">LOCATION: Teresa, Rizal, Philippines</p>
+    <p id="boot-status">LOADING PLAYER DATA...</p>
   </div>
 
-  <div class="pixel-card">
-    <img
-      class="profile-photo"
-      src="data:image/jpeg;base64,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"
-      alt="Portrait of Louigie C. Mutya"
-    >
+  <!-- NAVIGATION -->
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="Player One home">
+      <span class="brand-mark">▶</span>
+      PLAYER<span class="brand-accent">_ONE</span>
+    </a>
 
-    <div class="pixel-card-label">
+    <div class="header-status">
       <span class="status-dot"></span>
-      PLAYER 1 — ONLINE
+      SYSTEM ONLINE
     </div>
-  </div>
 
-</section>
+    <button
+      class="menu-toggle"
+      id="menu-btn"
+      aria-label="Toggle navigation"
+      aria-expanded="false"
+    >☰</button>
 
-<!-- ABOUT -->
-<section id="about">
-  <h2>01. ABOUT ME</h2>
+    <nav aria-label="Main navigation">
+      <ul id="nav-menu">
+        <li><a href="#home" class="active">START</a></li>
+        <li><a href="#about">PLAYER</a></li>
+        <li><a href="#education">LEVELS</a></li>
+        <li><a href="#skills">LOADOUT</a></li>
+        <li><a href="#projects">MISSIONS</a></li>
+        <li>
+          <a href="#contact" class="nav-contact">
+            CONNECT <span>↗</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </header>
 
-  <div class="panel">
+  <main>
+    <!-- HOME / HERO -->
+    <section class="hero section-shell" id="home">
+      <div class="hero-grid" aria-hidden="true"></div>
+
+      <div class="hero-copy reveal">
+        <p class="eyebrow">
+          <span class="eyebrow-line"></span>
+          PORTFOLIO BUILD 2026
+          <span class="pill">V 1.0</span>
+        </p>
+
+        <p class="pixel-kicker">INSERT COIN TO BEGIN</p>
+
+        <h1>
+          HEY PLAYER,<br>
+          I'M <span class="glitch" data-text="LOUIGIE">LOUIGIE</span><span class="title-period">.</span>
+        </h1>
+
+        <h2>Computer Engineering <span>Student</span></h2>
+
+        <p class="hero-description">
+          Curious mind. Future engineer.
+          <strong>In progress, never idle.</strong>
+          Welcome to my digital arcade — a look at my journey,
+          skills, and projects.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#projects" class="arcade-btn btn-primary">
+            <span>▶</span> VIEW MISSIONS
+          </a>
+
+          <a href="#about" class="arcade-btn btn-ghost">
+            PLAYER PROFILE <span>↘</span>
+          </a>
+        </div>
+
+        <div class="hero-stats">
+          <div>
+            <span class="stat-number" data-count="10">10</span>
+            <span class="stat-label">SKILLS</span>
+          </div>
+
+          <div>
+            <span class="stat-number">∞</span>
+            <span class="stat-label">CURIOSITY</span>
+          </div>
+
+          <div>
+            <span class="stat-number">01</span>
+            <span class="stat-label">PLAYER</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROFILE IMAGE -->
+      <div class="hero-visual reveal">
+        <div class="orbit orbit-one"></div>
+        <div class="orbit orbit-two"></div>
+
+        <div class="pixel-spark spark-one">✦</div>
+        <div class="pixel-spark spark-two">+</div>
+        <div class="pixel-spark spark-three">✧</div>
+
+        <div class="portrait-frame">
+          <div class="frame-top">
+            <span>PLAYER_ID: 001</span>
+            <span class="live-tag">● LIVE</span>
+          </div>
+
+          <div class="portrait">
+            <img
+              src="images/profile.jpg"
+              alt="Portrait of Louigie Mutya"
+              onerror="this.style.display='none';this.parentElement.classList.add('no-photo')"
+            >
+            <div class="portrait-fallback">
+              LM
+              <span>PLAYER<br>ONE</span>
+            </div>
+          </div>
+
+          <div class="frame-bottom">
+            <span>LOUIGIE C. MUTYA</span>
+            <span>LV. STUDENT</span>
+          </div>
+        </div>
+
+        <div class="floating-chip chip-top">[ DEV MODE ]</div>
+
+        <div class="floating-chip chip-bottom">
+          <span>✦</span> XP + 250
+          <small>LEARNING DAILY</small>
+        </div>
+      </div>
+
+      <a class="scroll-cue" href="#about">
+        <span class="scroll-mouse"></span>
+        SCROLL TO EXPLORE
+        <span>↓</span>
+      </a>
+    </section>
+
+    <!-- ABOUT ME -->
+    <section id="about" class="content-section section-shell">
+      <div class="section-heading reveal">
+        <p class="section-index">01 / PLAYER DATA</p>
+        <h2>THE <span>PLAYER</span> PROFILE</h2>
+        <p>Every player has a story. Here's mine.</p>
+      </div>
+
+      <div class="profile-layout">
+        <article class="terminal-card reveal">
+          <div class="window-bar">
+            <div class="window-dots">
+              <i></i><i></i><i></i>
+            </div>
+            <span>about_me.txt</span>
+            <span class="window-code">TXT</span>
+          </div>
+
+          <div class="terminal-content">
+            <p class="terminal-prompt">guest@portfolio:~$ whoami</p>
+
+            <h3>Who am I<span class="blink">_</span></h3>
+
+            <p>
+              I am a Computer Engineering student interested in
+              computer systems, software development, and technology.
+              I enjoy learning new skills and applying my knowledge
+              through academic activities and practical projects.
+            </p>
+
+            <p>
+              My goal is to develop my technical abilities,
+              gain experience, and become a competent professional
+              in the field of technology.
+            </p>
+
+            <div class="terminal-prompt last-prompt">
+              guest@portfolio:~$
+              <span>ready_to_learn</span>
+              <b>█</b>
+            </div>
+          </div>
+        </article>
+
+        <article class="info-card reveal">
+          <div class="card-topline">
+            <span>PLAYER DETAILS</span>
+            <span class="mini-icon">◈</span>
+          </div>
+
+          <h3>Identity Card</h3>
+
+          <dl class="info-list">
+            <div>
+              <dt>NAME</dt>
+              <dd>Mutya, Louigie C</dd>
+            </div>
+            <div>
+              <dt>AGE</dt>
+              <dd>21</dd>
+            </div>
+            <div>
+              <dt>LOCATION</dt>
+              <dd>Teresa, Rizal, Philippines</dd>
+            </div>
+            <div>
+              <dt>COURSE</dt>
+              <dd>BS Computer Engineering</dd>
+            </div>
+            <div>
+              <dt>EMAIL</dt>
+              <dd>
+                <a href="mailto:mutyalouigie@gmail.com">
+                  mutyalouigie@gmail.com
+                </a>
+              </dd>
+            </div>
+            <div>
+              <dt>PHONE</dt>
+              <dd>+63 992 468 3371</dd>
+            </div>
+          </dl>
+        </article>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education" class="content-section section-shell section-dark">
+      <div class="section-heading reveal">
+        <p class="section-index">02 / LEVEL SELECT</p>
+        <h2>MY <span>LEVELS</span> CLEARED</h2>
+        <p>Progress is made one stage at a time.</p>
+      </div>
+
+      <div class="timeline">
+        <article class="level-card reveal">
+          <span class="level-badge">LV. 04</span>
+          <div>
+            <p class="level-year">2023 — 2027</p>
+            <h3>College</h3>
+            <h4>ICCT Colleges</h4>
+            <p>Bachelor of Science in Computer Engineering</p>
+          </div>
+          <span class="level-status">IN PROGRESS</span>
+        </article>
+
+        <article class="level-card reveal">
+          <span class="level-badge">LV. 03</span>
+          <div>
+            <p class="level-year">2021 — 2023</p>
+            <h3>Senior High School</h3>
+            <h4>Pantay Integrated High School</h4>
+            <p>STEM Strand</p>
+          </div>
+          <span class="level-status cleared">CLEARED ✓</span>
+        </article>
+
+        <article class="level-card reveal">
+          <span class="level-badge">LV. 02</span>
+          <div>
+            <p class="level-year">2017 — 2021</p>
+            <h3>Junior High School</h3>
+            <h4>Kapayapaan Integrated High School</h4>
+          </div>
+          <span class="level-status cleared">CLEARED ✓</span>
+        </article>
+
+        <article class="level-card reveal">
+          <span class="level-badge">LV. 01</span>
+          <div>
+            <p class="level-year">2013 — 2017</p>
+            <h3>Elementary</h3>
+            <h4>San Ramon Elementary School</h4>
+          </div>
+          <span class="level-status cleared">CLEARED ✓</span>
+        </article>
+      </div>
+    </section>
+
+    <!-- INTERESTS -->
+    <section id="interests" class="content-section section-shell">
+      <div class="section-heading reveal">
+        <p class="section-index">03 / BONUS STAGE</p>
+        <h2>POWER-UPS & <span>INTERESTS</span></h2>
+        <p>Things that keep my curiosity charged.</p>
+      </div>
+
+      <div class="interest-grid">
+        <article class="interest-card reveal">
+          <span class="interest-icon">⌨</span>
+          <span class="card-number">BONUS 01</span>
+          <h3>Coding</h3>
+          <p>Learning programming and creating applications.</p>
+          <span class="card-arrow">↗</span>
+        </article>
+
+        <article class="interest-card reveal">
+          <span class="interest-icon">⚙</span>
+          <span class="card-number">BONUS 02</span>
+          <h3>Technology</h3>
+          <p>Exploring computer hardware and new technologies.</p>
+          <span class="card-arrow">↗</span>
+        </article>
+
+        <article class="interest-card reveal">
+          <span class="interest-icon">🎮</span>
+          <span class="card-number">BONUS 03</span>
+          <h3>Gaming</h3>
+          <p>Playing games and exploring digital worlds.</p>
+          <span class="card-arrow">↗</span>
+        </article>
+
+        <article class="interest-card reveal">
+          <span class="interest-icon">♫</span>
+          <span class="card-number">BONUS 04</span>
+          <h3>Music</h3>
+          <p>Listening to music during my free time.</p>
+          <span class="card-arrow">↗</span>
+        </article>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="content-section section-shell section-dark">
+      <div class="section-heading reveal">
+        <p class="section-index">04 / EQUIPMENT MENU</p>
+        <h2>MY <span>LOADOUT</span></h2>
+        <p>Tools and abilities I'm building up.</p>
+      </div>
+
+      <div class="skills-panel reveal">
+        <div class="skills-panel-head">
+          <span>SKILL INVENTORY</span>
+          <span>10 ITEMS FOUND</span>
+        </div>
+
+        <div class="skill-list">
+          <div class="skill-item">
+            <span class="skill-symbol">▣</span>
+            HTML <span class="skill-type">WEB</span>
+            <span class="skill-xp"><i style="--xp:82%"></i></span>
+          </div>
+
+          <div class="skill-item">
+            <span class="skill-symbol">▣</span>
+            CSS <span class="skill-type">WEB</span>
+            <span class="skill-xp"><i style="--xp:76%"></i></span>
+          </div>
+
+          <div class="skill-item">
+            <span class="skill-symbol">⌘</span>
+            JavaScript <span class="skill-type">WEB</span>
+            <span class="skill-xp"><i style="--xp:58%"></i></span>
+          </div>
+
+          <div class="skill-item">
+            <span class="skill-symbol">☕</span>
+            Java <span class="skill-type">CODE</span>
+            <span class="skill-xp"><i style="--xp:64%"></i></span>
+          </div>
+
+          <div class="skill-item">
+            <span class="skill-symbol">⌬</span>
+            C++ <span class="skill-type">CODE</span>
+            <span class="skill-xp"><i style="--xp:52%"></i></span>
+          </div>
+
+          <div class="skill-item">
+            <span class="skill-symbol">▤</span>
+            AutoCAD <span class="skill-type">DESIGN</span>
+            <span class="skill-xp"><i style="--xp:50%"></i></span>
+          </div>
+
+          <div class="skill-item">
+            <span class="skill-symbol">⑂</span>
+            GitHub <span class="skill-type">TOOLS</span>
+            <span class="skill-xp"><i style="--xp:68%"></i></span>
+          </div>
+
+          <div class="skill-item">
+            <span class="skill-symbol">⌁</span>
+            Microcontrollers <span class="skill-type">HARDWARE</span>
+            <span class="skill-xp"><i style="--xp:45%"></i></span>
+          </div>
+
+          <div class="skill-item">
+            <span class="skill-symbol">◇</span>
+            Problem Solving <span class="skill-type">CORE</span>
+            <span class="skill-xp"><i style="--xp:72%"></i></span>
+          </div>
+
+          <div class="skill-item">
+            <span class="skill-symbol">♧</span>
+            Teamwork <span class="skill-type">CORE</span>
+            <span class="skill-xp"><i style="--xp:78%"></i></span>
+          </div>
+        </div>
+
+        <p class="skills-note">
+          * Skill bars are visual estimates — update them to match your actual experience.
+        </p>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="content-section section-shell">
+      <div class="section-heading reveal">
+        <p class="section-index">05 / MISSION SELECT</p>
+        <h2>ACADEMIC <span>MISSIONS</span></h2>
+        <p>Projects, experiments, and checkpoints from my learning journey.</p>
+      </div>
+
+      <div class="mission-grid">
+        <article class="mission-card reveal">
+          <div class="mission-art art-purple">
+            <span class="mission-icon">▤</span>
+            <span class="mission-id">MISSION_001</span>
+            <div class="art-grid"></div>
+          </div>
+
+          <div class="mission-content">
+            <div class="mission-meta">
+              <span>JAVA</span>
+              <span>DESKTOP APP</span>
+            </div>
+            <h3>Library Management System</h3>
+            <p>
+              A Java desktop application for organizing book records
+              and managing borrowing and returning.
+            </p>
+            <div class="tag-row">
+              <span>Java</span>
+              <span>Swing</span>
+            </div>
+            <a
+              href="https://github.com/mutyalouigie-collab"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mission-link"
+            >
+              EXPLORE PROJECT <span>↗</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="mission-card reveal">
+          <div class="mission-art art-cyan">
+            <span class="mission-icon">⌘</span>
+            <span class="mission-id">MISSION_002</span>
+            <div class="art-grid"></div>
+          </div>
+
+          <div class="mission-content">
+            <div class="mission-meta">
+              <span>WEB DEV</span>
+              <span>WEBSITE</span>
+            </div>
+            <h3>Event Management Website</h3>
+            <p>
+              A school website project designed to present event
+              information in an organized and accessible way.
+            </p>
+            <div class="tag-row">
+              <span>HTML</span>
+              <span>CSS</span>
+              <span>JavaScript</span>
+            </div>
+            <a
+              href="https://github.com/mutyalouigie-collab"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mission-link"
+            >
+              EXPLORE PROJECT <span>↗</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="mission-card reveal">
+          <div class="mission-art art-orange">
+            <span class="mission-icon">✧</span>
+            <span class="mission-id">MISSION_003</span>
+            <div class="art-grid"></div>
+          </div>
+
+          <div class="mission-content">
+            <div class="mission-meta">
+              <span>IN DEVELOPMENT</span>
+              <span>ACADEMIC</span>
+            </div>
+            <h3>Next Project</h3>
+            <p>
+              Have another project? Replace this card with its purpose,
+              the tools used, and what you learned.
+            </p>
+            <div class="tag-row">
+              <span>Technology</span>
+              <span>Academic</span>
+            </div>
+            <a
+              href="https://github.com/mutyalouigie-collab"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mission-link"
+            >
+              VIEW GITHUB <span>↗</span>
+            </a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="content-section section-shell contact-section">
+      <div class="contact-decoration" aria-hidden="true">
+        CONNECT<br>_PLAYER
+      </div>
+
+      <div class="section-heading reveal">
+        <p class="section-index">06 / PLAYER CONNECTION</p>
+        <h2>LET'S <span>CONNECT</span></h2>
+        <p>Got an idea, a project, or just want to say hi? Send a signal.</p>
+      </div>
+
+      <div class="contact-grid reveal">
+        <a href="mailto:mutyalouigie@gmail.com" class="contact-card">
+          <span class="contact-icon">✉</span>
+          <span>
+            <small>DROP A MESSAGE</small>
+            <strong>Email</strong>
+            <em>mutyalouigie@gmail.com</em>
+          </span>
+          <b>↗</b>
+        </a>
+
+        <a
+          href="https://github.com/mutyalouigie-collab"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="contact-card"
+        >
+          <span class="contact-icon">⌘</span>
+          <span>
+            <small>CODE REPOSITORIES</small>
+            <strong>GitHub</strong>
+            <em>Visit my profile</em>
+          </span>
+          <b>↗</b>
+        </a>
+
+        <a
+          href="https://www.linkedin.com/in/mutya-louigie-c-1b01a0442/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="contact-card"
+        >
+          <span class="contact-icon">in</span>
+          <span>
+            <small>PRO NETWORK</small>
+            <strong>LinkedIn</strong>
+            <em>Connect with me</em>
+          </span>
+          <b>↗</b>
+        </a>
+
+        <a
+          href="https://www.facebook.com/louigiemutyaaa/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="contact-card"
+        >
+          <span class="contact-icon">f</span>
+          <span>
+            <small>SOCIAL FEED</small>
+            <strong>Facebook</strong>
+            <em>Visit my profile</em>
+          </span>
+          <b>↗</b>
+        </a>
+      </div>
+
+      <div class="end-card reveal">
+        <span class="end-star">✦</span>
+        <p>THANKS FOR PLAYING</p>
+        <span>THE NEXT LEVEL STARTS NOW.</span>
+        <a href="#home" class="back-top">↑ BACK TO TOP</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <a class="footer-brand" href="#home">PLAYER<span>_ONE</span></a>
+
     <p>
-      Hi! I'm <strong>Louigie C. Mutya</strong>, a Bachelor of Science
-      in Computer Engineering student at ICCT Colleges. I'm interested
-      in computers, software, electronics, and learning how technology
-      works. I want to keep improving my skills and use what I learn
-      to create useful projects.
+      © <span id="year"></span> Mutya Louigie C. ALL RIGHTS RESERVED.
     </p>
 
-    <p class="small">
-      CLASS: Computer Engineering Student · MODE: Learning & Building
+    <p class="footer-status">
+      <span class="status-dot"></span>
+      MADE WITH CURIOSITY + CAFFEINE
     </p>
+  </footer>
+
+  <!-- SOUND CONTROL AND NOTIFICATION -->
+  <button
+    class="sound-toggle"
+    id="sound-toggle"
+    aria-label="Toggle interface sound"
+    title="Toggle interface sound"
+  >
+    ♪ <span>SOUND: OFF</span>
+  </button>
+
+  <div class="toast" id="toast" role="status" aria-live="polite">
+    PLAYER READY
   </div>
-</section>
-
-<!-- EDUCATION -->
-<section id="education">
-  <h2>02. EDUCATION</h2>
-
-  <div class="panel timeline">
-
-    <div class="timeline-item">
-      <h3>ICCT Colleges</h3>
-      <p>Bachelor of Science in Computer Engineering</p>
-      <span class="small">2023–2027</span>
-    </div>
-
-    <div class="timeline-item">
-      <h3>Pantay Integrated High School</h3>
-      <span class="small">2021–2023</span>
-    </div>
-
-    <div class="timeline-item">
-      <h3>Kapayapaan Integrated High School</h3>
-      <span class="small">2017–2021</span>
-    </div>
-
-    <div class="timeline-item">
-      <h3>San Ramon Elementary School</h3>
-      <span class="small">2013–2017</span>
-    </div>
-
-  </div>
-</section>
-
-<!-- INTERESTS -->
-<section id="interests">
-  <h2>03. INTERESTS</h2>
-
-  <div class="grid">
-
-    <div class="panel">
-      <h3>⌘ Programming</h3>
-      <p>
-        Learning how to create websites and applications, and improving
-        my coding skills through practice.
-      </p>
-    </div>
-
-    <div class="panel">
-      <h3>▣ Electronics & Hardware</h3>
-      <p>
-        Exploring microcontrollers, computer hardware, and the connection
-        between software and electronics.
-      </p>
-    </div>
-
-  </div>
-</section>
-
-<!-- SKILLS -->
-<section id="skills">
-  <h2>04. SKILL INVENTORY</h2>
-
-  <div class="panel">
-    <p class="small">CURRENTLY UNLOCKED</p>
-
-    <div class="tags">
-      <span class="tag">HTML</span>
-      <span class="tag">CSS</span>
-      <span class="tag">JavaScript</span>
-      <span class="tag">Java</span>
-      <span class="tag">C++</span>
-      <span class="tag">AutoCAD</span>
-      <span class="tag">GitHub</span>
-      <span class="tag">Microcontrollers</span>
-      <span class="tag">Problem Solving</span>
-      <span class="tag">Teamwork</span>
-    </div>
-  </div>
-</section>
-
-<!-- PROJECTS -->
-<section id="projects">
-  <h2>05. PROJECTS</h2>
-
-  <div class="grid">
-
-    <div class="panel project-card">
-      <h3>01 / Library Management System</h3>
-
-      <p>
-        A project concept focused on organizing library records and
-        making book information easier to manage.
-      </p>
-
-      <div class="tags">
-        <span class="tag">Programming</span>
-        <span class="tag">Database Concepts</span>
-      </div>
-    </div>
-
-    <div class="panel project-card">
-      <h3>02 / Personal Portfolio</h3>
-
-      <p>
-        This arcade-inspired portfolio showcases my background,
-        education, skills, and project interests in one place.
-      </p>
-
-      <div class="tags">
-        <span class="tag">HTML</span>
-        <span class="tag">CSS</span>
-        <span class="tag">JavaScript</span>
-      </div>
-    </div>
-
-  </div>
-
-  <p class="small">
-    Edit project descriptions to match the exact features and
-    technologies used in your projects.
-  </p>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-  <h2>06. CONTACT</h2>
-
-  <div class="grid">
-
-    <div class="panel">
-      <h3>LET'S CONNECT</h3>
-
-      <p>
-        Have a project, school collaboration, or tech idea?
-        Feel free to reach out.
-      </p>
-
-      <p class="small">MISSION: Keep learning. Keep creating.</p>
-    </div>
-
-    <div class="contact-list">
-
-      <div class="contact-row">
-        ✉ EMAIL<br>
-        <a href="mailto:mutyalouigie@gmail.com">
-          mutyalouigie@gmail.com
-        </a>
-      </div>
-
-      <div class="contact-row">
-        ☎ PHONE<br>
-        <a href="tel:+639924683371">
-          +63 992 468 3371
-        </a>
-      </div>
-
-      <div class="contact-row">
-        ⌖ LOCATION<br>
-        Teresa, Rizal, Philippines
-      </div>
-
-    </div>
-  </div>
-</section>
-
-</main>
-
-<footer>
-  © <span id="year"></span> LOUIGIE C. MUTYA · GAME OVER? NEVER.
-  <span style="color:var(--pink)">♥</span>
-</footer>
-
-<div class="slime"
-     title="Tiny slime mascot"
-     aria-label="Tiny slime mascot"></div>
-
-<button class="music-control" id="musicToggle" type="button">
-  ♫ MUSIC: OFF
-</button>
-
-<script>
-document.getElementById('year').textContent =
-  new Date().getFullYear();
-
-// Browser-generated chiptune-style melody.
-// Click the button to start or stop the music.
-let ctx = null;
-let timer = null;
-let index = 0;
-let on = false;
-
-const melody = [
-  659, 784, 988, 784,
-  523, 659, 784, 659,
-  587, 698, 880, 698,
-  494, 587, 698, 587
-];
-
-function note(freq) {
-  if (!ctx) return;
-
-  const o = ctx.createOscillator();
-  const g = ctx.createGain();
-
-  o.type = 'square';
-  o.frequency.value = freq;
-
-  g.gain.setValueAtTime(0.0001, ctx.currentTime);
-  g.gain.exponentialRampToValueAtTime(
-    0.04,
-    ctx.currentTime + 0.01
-  );
-  g.gain.exponentialRampToValueAtTime(
-    0.0001,
-    ctx.currentTime + 0.13
-  );
-
-  o.connect(g);
-  g.connect(ctx.destination);
-
-  o.start();
-  o.stop(ctx.currentTime + 0.15);
-}
-
-document.getElementById('musicToggle').addEventListener(
-  'click',
-  async function () {
-    if (!on) {
-      ctx = ctx ||
-        new (window.AudioContext || window.webkitAudioContext)();
-
-      if (ctx.state === 'suspended') {
-        await ctx.resume();
-      }
-
-      on = true;
-      this.textContent = '♫ MUSIC: ON';
-
-      timer = setInterval(() => {
-        note(melody[index++ % melody.length]);
-      }, 160);
-
-    } else {
-      on = false;
-      clearInterval(timer);
-      this.textContent = '♫ MUSIC: OFF';
-    }
-  }
-);
-</script>
-
 </body>
 </html>
