@@ -279,4 +279,139 @@ soundButton.addEventListener('click', async () => {
   if (image.complete && image.naturalWidth === 0) {
     portrait.classList.add('no-photo');
   }
+  // Pokémon appear after 10 seconds without user activity.
+  const pokemonStage = document.querySelector('#pokemon-walkers');
+
+  if (
+    pokemonStage &&
+    !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  ) {
+    const pokemonFiles = Array.from(
+      { length: 25 },
+      (_, i) =>
+        `images/pokemon/pokemon-${String(i + 1).padStart(2, '0')}.png`
+    );
+
+    let idleTimer;
+    let walkers = [];
+    let walking = false;
+
+    function resetIdleTimer() {
+      pokemonStage.classList.remove('is-visible');
+      walking = false;
+
+      walkers.forEach(walker => {
+        if (walker.frame) {
+          cancelAnimationFrame(walker.frame);
+        }
+      });
+
+      walkers = [];
+      pokemonStage.replaceChildren();
+      clearTimeout(idleTimer);
+
+      idleTimer = setTimeout(startPokemonWalk, 10000);
+    }
+
+    function startPokemonWalk() {
+      if (walking || document.hidden) return;
+
+      walking = true;
+      pokemonStage.classList.add('is-visible');
+
+      const count = 3 + Math.floor(Math.random() * 3);
+
+      const chosen = [...pokemonFiles]
+        .sort(() => Math.random() - 0.5)
+        .slice(0, count);
+
+      chosen.forEach((src, index) => {
+        const sprite = document.createElement('img');
+
+        sprite.className = 'pokemon-walker';
+        sprite.alt = '';
+        sprite.draggable = false;
+        sprite.src = src;
+
+        pokemonStage.appendChild(sprite);
+
+        const direction = index % 2 === 0 ? 1 : -1;
+
+        const startX =
+          direction === 1
+            ? -70 - index * 85
+            : window.innerWidth + index * 85;
+
+        const speed = 24 + Math.random() * 24;
+
+        const walker = {
+          sprite,
+          x: startX,
+          direction,
+          speed,
+          last: 0,
+          frame: 0
+        };
+
+        if (direction < 0) {
+          sprite.style.transform = 'scaleX(-1)';
+        }
+
+        walkers.push(walker);
+
+        function animate(now) {
+          if (!walking || !sprite.isConnected) return;
+
+          if (!walker.last) walker.last = now;
+
+          const delta = Math.min(
+            (now - walker.last) / 1000,
+            0.05
+          );
+
+          walker.last = now;
+          walker.x += walker.direction * walker.speed * delta;
+
+          sprite.style.left = `${walker.x}px`;
+
+          if (
+            (walker.direction > 0 &&
+              walker.x > window.innerWidth + 75) ||
+            (walker.direction < 0 && walker.x < -75)
+          ) {
+            walker.x =
+              walker.direction > 0
+                ? -75
+                : window.innerWidth + 75;
+          }
+
+          walker.frame = requestAnimationFrame(animate);
+        }
+
+        walker.frame = requestAnimationFrame(animate);
+      });
+    }
+
+    [
+      'pointermove',
+      'pointerdown',
+      'keydown',
+      'scroll',
+      'touchstart',
+      'wheel'
+    ].forEach(eventName => {
+      window.addEventListener(eventName, resetIdleTimer, {
+        passive: true
+      });
+    });
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        resetIdleTimer();
+      }
+    });
+
+    resetIdleTimer();
+  }
+
 });

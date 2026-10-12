@@ -1978,3 +1978,42 @@ footer .footer-status {
     display: none;
   }
 }
+
+/* Idle Pokémon walkers — additive feature only */
+.pokemon-walkers {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 76px;
+  z-index: 120;
+  pointer-events: none;
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.pokemon-walkers.is-visible {
+  opacity: 1;
+}
+
+.pokemon-walker {
+  position: absolute;
+  bottom: 0;
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  image-rendering: pixelated;
+  filter: drop-shadow(0 2px 1px #0008);
+  will-change: transform;
+}
+
+.pokemon-walker.is-flipped {
+  transform: scaleX(-1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pokemon-walkers {
+    display: none;
+  }
+}
