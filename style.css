@@ -2017,3 +2017,19 @@ footer .footer-status {
     display: none;
   }
 }
+
+/* Walking animation */
+.pokemon-walker {
+  image-rendering: pixelated;
+  transform-origin: center bottom;
+  animation: pokemon-walk-bob 0.25s steps(2, end) infinite;
+}
+
+@keyframes pokemon-walk-bob {
+  0% {
+    margin-bottom: 0;
+  }
+  100% {
+    margin-bottom: 3px;
+  }
+}
