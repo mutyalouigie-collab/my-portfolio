@@ -2036,3 +2036,43 @@ footer .footer-status {
 .scanlines {
     display: none !important;
 }
+
+/* REMOVE SCANLINES FROM THE ENTIRE WEBSITE */
+.scanlines,
+.scanlines::before,
+.scanlines::after {
+  display: none !important;
+  background: none !important;
+  opacity: 0 !important;
+}
+
+/* REMOVE POSSIBLE OVERLAYS FROM THE PORTRAIT */
+.portrait-frame::before,
+.portrait-frame::after,
+.portrait-frame img::before,
+.portrait-frame img::after {
+  content: none !important;
+  display: none !important;
+  background: none !important;
+  animation: none !important;
+  filter: none !important;
+}
+
+/* Remove horizontal scanline effects from the profile picture */
+.portrait,
+.portrait img {
+  background-image: none !important;
+  filter: none !important;
+}
+
+.portrait::before,
+.portrait::after,
+.portrait img::before,
+.portrait img::after,
+.portrait-frame::before,
+.portrait-frame::after {
+  content: none !important;
+  display: none !important;
+  background: none !important;
+  animation: none !important;
+}
