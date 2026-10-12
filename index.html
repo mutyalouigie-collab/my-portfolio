@@ -1,318 +1,648 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090b18">
+  <meta name="description" content="Louigie C. Mutya — Computer Engineering student portfolio">
+  <title>PLAYER ONE // Louigie Mutya</title>
 
-    <!-- Palitan ang pangalan ng portfolio mo -->
-    <title>My E-Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
+
 <body>
+  <div class="scanlines" aria-hidden="true"></div>
+  <div class="cursor-glow" aria-hidden="true"></div>
 
-    <!-- NAVIGATION BAR -->
-    <header>
-        <nav class="navbar">
-            <a href="#home" class="logo">MY<span>PORTFOLIO</span></a>
+  <!-- ARCADE LOADING SCREEN -->
+  <div class="boot-screen" id="boot-screen" aria-label="Loading portfolio">
+    <div class="boot-logo">LOUIGIE.EXE</div>
+    <div class="boot-line">
+      <span id="boot-progress"></span>
+    </div>
+    <p id="boot-status">LOADING PLAYER DATA...</p>
+  </div>
 
-            <button id="menu-btn" aria-label="Toggle navigation"
-                    aria-expanded="false">☰</button>
+  <!-- NAVIGATION -->
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="Player One home">
+      <span class="brand-mark">▶</span>
+      PLAYER<span class="brand-accent">_ONE</span>
+    </a>
 
-            <ul id="nav-menu">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact" class="contact-link">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+    <div class="header-status">
+      <span class="status-dot"></span>
+      SYSTEM ONLINE
+    </div>
 
-    <main>
-        
-<!-- HOME SECTION -->
-<section id="home" class="hero">
-    <div class="hero-text">
-        <p class="small-title">WELCOME TO MY E-PORTFOLIO</p>
+    <button
+      class="menu-toggle"
+      id="menu-btn"
+      aria-label="Toggle navigation"
+      aria-expanded="false"
+    >☰</button>
 
-        <h1>Hello, I'm <span>Mutya, Louigie C</span></h1>
+    <nav aria-label="Main navigation">
+      <ul id="nav-menu">
+        <li><a href="#home" class="active">START</a></li>
+        <li><a href="#about">PLAYER</a></li>
+        <li><a href="#education">LEVELS</a></li>
+        <li><a href="#skills">LOADOUT</a></li>
+        <li><a href="#projects">MISSIONS</a></li>
+        <li>
+          <a href="#contact" class="nav-contact">
+            CONNECT <span>↗</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </header>
 
-        <h2>Computer Engineering Student</h2>
+  <main>
+    <!-- HOME / HERO -->
+    <section class="hero section-shell" id="home">
+      <div class="hero-grid" aria-hidden="true"></div>
 
-        <p class="description">
-            I am a passionate student who enjoys technology,
-            programming, and discovering new things. This portfolio
-            showcases my background, skills, interests, and projects.
+      <div class="hero-copy reveal">
+        <p class="eyebrow">
+          <span class="eyebrow-line"></span>
+          PORTFOLIO BUILD 2026
+          <span class="pill">V 1.0</span>
         </p>
 
-        <div class="buttons">
-            <a href="#projects" class="btn primary-btn">
-                View My Projects
-            </a>
-            <a href="#contact" class="btn secondary-btn">
-                Contact Me
-            </a>
+        <p class="pixel-kicker">INSERT COIN TO BEGIN</p>
+
+        <h1>
+          HEY PLAYER,<br>
+          I'M <span class="glitch" data-text="LOUIGIE">LOUIGIE</span><span class="title-period">.</span>
+        </h1>
+
+        <h2>Computer Engineering <span>Student</span></h2>
+
+        <p class="hero-description">
+          Curious mind. Future engineer.
+          <strong>In progress, never idle.</strong>
+          Welcome to my digital arcade — a look at my journey,
+          skills, and projects.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#projects" class="arcade-btn btn-primary">
+            <span>▶</span> VIEW MISSIONS
+          </a>
+
+          <a href="#about" class="arcade-btn btn-ghost">
+            PLAYER PROFILE <span>↘</span>
+          </a>
         </div>
-    </div>
 
-    <!-- PROFILE PHOTO -->
-    <div class="profile-area">
-        <div class="profile-circle">
-            <img src="images/profile.jpg" alt="My Profile">
+        <div class="hero-stats">
+          <div>
+            <span class="stat-number" data-count="10">10</span>
+            <span class="stat-label">SKILLS</span>
+          </div>
+
+          <div>
+            <span class="stat-number">∞</span>
+            <span class="stat-label">CURIOSITY</span>
+          </div>
+
+          <div>
+            <span class="stat-number">01</span>
+            <span class="stat-label">PLAYER</span>
+          </div>
         </div>
-        <p>Future Engineer | Aspiring Developer</p>
-    </div>
-</section>
+      </div>
 
-<!-- ABOUT ME -->
+      <!-- PROFILE IMAGE -->
+      <div class="hero-visual reveal">
+        <div class="orbit orbit-one"></div>
+        <div class="orbit orbit-two"></div>
 
+        <div class="pixel-spark spark-one">✦</div>
+        <div class="pixel-spark spark-two">+</div>
+        <div class="pixel-spark spark-three">✧</div>
 
-        <!-- ABOUT ME -->
-        <section id="about" class="section">
-            <div class="section-heading">
-                <p class="small-title">GET TO KNOW ME</p>
-                <h2>About <span>Me</span></h2>
+        <div class="portrait-frame">
+          <div class="frame-top">
+            <span>PLAYER_ID: 001</span>
+            <span class="live-tag">● LIVE</span>
+          </div>
+
+          <div class="portrait">
+            <img
+              src="images/profile.jpg"
+              alt="Portrait of Louigie Mutya"
+              onerror="this.style.display='none';this.parentElement.classList.add('no-photo')"
+            >
+            <div class="portrait-fallback">
+              LM
+              <span>PLAYER<br>ONE</span>
             </div>
+          </div>
 
-            <div class="about-content">
-                <div class="about-description">
-                    <h3>Who Am I?</h3>
-                    <p>
-                        I am a Computer Engineering student interested in
-                        computer systems, software development, and technology.
-                        I enjoy learning new skills and applying my knowledge
-                        through academic activities and practical projects.
-                    </p>
-                    <p>
-                        My goal is to develop my technical abilities,
-                        gain experience, and become a competent professional
-                        in the field of technology.
-                    </p>
-                </div>
+          <div class="frame-bottom">
+            <span>LOUIGIE C. MUTYA</span>
+            <span>LV. STUDENT</span>
+          </div>
+        </div>
 
-                <div class="personal-info">
-                    <h3>Personal Information</h3>
-                    <!-- PALITAN: Ilagay ang sarili mong information -->
-                    <p><strong>Name:</strong> Mutya, Louigie C</p>
-                    <p><strong>Age:</strong>21</p>
-                    <p><strong>Location:</strong> Teresa, Rizal, Philippines</p>
-                    <p><strong>Course:</strong> BS Computer Engineering</p>
-                    <p><strong>Email:</strong> mutyalouigie@gmail.com</p>
-                    <p><strong>Phone:</strong> +63 992 468 3371 </p>
-                </div>
+        <div class="floating-chip chip-top">[ DEV MODE ]</div>
+
+        <div class="floating-chip chip-bottom">
+          <span>✦</span> XP + 250
+          <small>LEARNING DAILY</small>
+        </div>
+      </div>
+
+      <a class="scroll-cue" href="#about">
+        <span class="scroll-mouse"></span>
+        SCROLL TO EXPLORE
+        <span>↓</span>
+      </a>
+    </section>
+
+    <!-- ABOUT ME -->
+    <section id="about" class="content-section section-shell">
+      <div class="section-heading reveal">
+        <p class="section-index">01 / PLAYER DATA</p>
+        <h2>THE <span>PLAYER</span> PROFILE</h2>
+        <p>Every player has a story. Here's mine.</p>
+      </div>
+
+      <div class="profile-layout">
+        <article class="terminal-card reveal">
+          <div class="window-bar">
+            <div class="window-dots">
+              <i></i><i></i><i></i>
             </div>
-        </section>
+            <span>about_me.txt</span>
+            <span class="window-code">TXT</span>
+          </div>
 
-        <!-- EDUCATION -->
-        <section id="education" class="section alternate">
-            <div class="section-heading">
-                <p class="small-title">MY ACADEMIC JOURNEY</p>
-                <h2>Educational <span>Background</span></h2>
+          <div class="terminal-content">
+            <p class="terminal-prompt">guest@portfolio:~$ whoami</p>
+
+            <h3>Who am I<span class="blink">_</span></h3>
+
+            <p>
+              I am a Computer Engineering student interested in
+              computer systems, software development, and technology.
+              I enjoy learning new skills and applying my knowledge
+              through academic activities and practical projects.
+            </p>
+
+            <p>
+              My goal is to develop my technical abilities,
+              gain experience, and become a competent professional
+              in the field of technology.
+            </p>
+
+            <div class="terminal-prompt last-prompt">
+              guest@portfolio:~$
+              <span>ready_to_learn</span>
+              <b>█</b>
             </div>
+          </div>
+        </article>
 
-            <div class="education-list">
-                <article class="education-card">
-                    <span class="year">2023 – 2027</span>
-                    <h3>College</h3>
-                    <h4>ICCT Colleges</h4>
-                    <p>Bachelor of Science in Computer Engineering</p>
-                </article>
+        <article class="info-card reveal">
+          <div class="card-topline">
+            <span>PLAYER DETAILS</span>
+            <span class="mini-icon">◈</span>
+          </div>
 
-                <article class="education-card">
-                    <span class="year">2021 – 2023</span>
-                    <h3>Senior High School</h3>
-                    <h4>Pantay integrated High School</h4>
-                    <p>STEM Strand</p>
-                </article>
+          <h3>Identity Card</h3>
 
-                <article class="education-card">
-                    <span class="year">2017 – 2021</span>
-                    <h3>Junior High School</h3>
-                    <h4>Kapayapaan Integrated High School</h4>
-                </article>
-
-                <article class="education-card">
-                    <span class="year">2013 – 2017</span>
-                    <h3>Elementary</h3>
-                    <h4>San Ramon Elementary School</h4>
-                </article>
+          <dl class="info-list">
+            <div>
+              <dt>NAME</dt>
+              <dd>Mutya, Louigie C</dd>
             </div>
-        </section>
-
-        <!-- INTERESTS -->
-        <section class="section" id="interests">
-            <div class="section-heading">
-                <p class="small-title">OUTSIDE THE CLASSROOM</p>
-                <h2>My <span>Interests</span></h2>
+            <div>
+              <dt>AGE</dt>
+              <dd>21</dd>
             </div>
-
-            <div class="card-grid">
-                <article class="interest-card">
-                    <div class="card-icon">⌨</div>
-                    <h3>Coding</h3>
-                    <p>Learning programming and creating applications.</p>
-                </article>
-
-                <article class="interest-card">
-                    <div class="card-icon">⚙</div>
-                    <h3>Technology</h3>
-                    <p>Exploring computer hardware and new technologies.</p>
-                </article>
-
-                <article class="interest-card">
-                    <div class="card-icon">🎮</div>
-                    <h3>Gaming</h3>
-                    <p>Playing games and exploring digital worlds.</p>
-                </article>
-
-                <article class="interest-card">
-                    <div class="card-icon">♫</div>
-                    <h3>Music</h3>
-                    <p>Listening to music during my free time.</p>
-                </article>
+            <div>
+              <dt>LOCATION</dt>
+              <dd>Teresa, Rizal, Philippines</dd>
             </div>
-        </section>
-
-        <!-- SKILLS -->
-        <section id="skills" class="section alternate">
-            <div class="section-heading">
-                <p class="small-title">WHAT I CAN DO</p>
-                <h2>My <span>Skills</span></h2>
+            <div>
+              <dt>COURSE</dt>
+              <dd>BS Computer Engineering</dd>
             </div>
-
-            <div class="skills-container">
-                <!-- Palitan ang skills ayon sa tunay mong experience -->
-                <span class="skill">HTML</span>
-                <span class="skill">CSS</span>
-                <span class="skill">JavaScript</span>
-                <span class="skill">Java</span>
-                <span class="skill">C++</span>
-                <span class="skill">AutoCAD</span>
-                <span class="skill">GitHub</span>
-                <span class="skill">Microcontrollers</span>
-                <span class="skill">Problem Solving</span>
-                <span class="skill">Teamwork</span>
-            </div>
-        </section>
-
-        <!-- PROJECTS -->
-        <section id="projects" class="section">
-            <div class="section-heading">
-                <p class="small-title">MY WORK</p>
-                <h2>Academic <span>Projects</span></h2>
-                <p>Some projects and activities I have worked on.</p>
-            </div>
-
-            <div class="card-grid project-grid">
-                <article class="project-card">
-                    <div class="project-visual">📚</div>
-                    <div class="project-body">
-                        <h3>Library Management System</h3>
-                        <p>
-                            A Java desktop application for organizing book
-                            records and managing borrowing and returning.
-                        </p>
-                        <div class="tags">
-                            <span>Java</span>
-                            <span>Swing</span>
-                        </div>
-                        <!-- PALITAN: Ilagay ang project repository URL -->
-                        <a href="https://mutyalouigie-collab.github.io/my-portfolio/
-                           target="_blank" rel="noopener noreferrer">
-                            View Project ↗
-                        </a>
-                    </div>
-                </article>
-
-                <article class="project-card">
-                    <div class="project-visual">🌐</div>
-                    <div class="project-body">
-                        <h3>Event Management Website</h3>
-                        <p>
-                            A school website project designed to present event
-                            information in an organized and accessible way.
-                        </p>
-                        <div class="tags">
-                            <span>HTML</span>
-                            <span>CSS</span>
-                            <span>JavaScript</span>
-                        </div>
-                        <a href="https://mutyalouigie-collab.github.io/my-portfolio/
-                           target="_blank" rel="noopener noreferrer">
-                            View Project ↗
-                        </a>
-                    </div>
-                </article>
-
-                <article class="project-card">
-                    <div class="project-visual">💡</div>
-                    <div class="project-body">
-                        <h3>Your Next Project</h3>
-                        <p>
-                            Describe another school project, its purpose,
-                            the tools used, and what you learned.
-                        </p>
-                        <div class="tags">
-                            <span>Technology</span>
-                            <span>Academic</span>
-                        </div>
-                        <a href="https://mutyalouigie-collab.github.io/my-portfolio/"
-                           target="_blank" rel="noopener noreferrer">
-                            View Project ↗
-                        </a>
-                    </div>
-                </article>
-            </div>
-        </section>
-
-        <!-- CONTACT -->
-        <section id="contact" class="section alternate">
-            <div class="section-heading">
-                <p class="small-title">LET'S CONNECT</p>
-                <h2>Contact <span>Me</span></h2>
-                <p>Feel free to send me a message or connect through my profiles.</p>
-            </div>
-
-            <div class="contact-box">
-                <a href="mailto:your.email@example.com" class="contact-item">
-                    <strong>Email</strong>
-                    <span>mutyalouigie@gmail.com</span>
+            <div>
+              <dt>EMAIL</dt>
+              <dd>
+                <a href="mailto:mutyalouigie@gmail.com">
+                  mutyalouigie@gmail.com
                 </a>
-
-                <!-- PALITAN: Social media URLs -->
-                <a href="https://github.com/mutyalouigie-collab"
-                   target="_blank" rel="noopener noreferrer"
-                   class="contact-item">
-                    <strong>GitHub</strong>
-                    <span>Visit my profile ↗</span>
-                </a>
-
-                <a href="https://www.linkedin.com/in/mutya-louigie-c-1b01a0442/
-                   target="_blank" rel="noopener noreferrer"
-                   class="contact-item">
-                    <strong>LinkedIn</strong>
-                    <span>Connect with me ↗</span>
-                </a>
-
-                <a href="https://www.facebook.com/louigiemutyaaa/
-                   target="_blank" rel="noopener noreferrer"
-                   class="contact-item">
-                    <strong>Facebook</strong>
-                    <span>Visit my profile ↗</span>
-                </a>
+              </dd>
             </div>
-        </section>
-    </main>
+            <div>
+              <dt>PHONE</dt>
+              <dd>+63 992 468 3371</dd>
+            </div>
+          </dl>
+        </article>
+      </div>
+    </section>
 
-    <!-- FOOTER -->
-    <footer>
-        <p>© <span id="year"></span> Mutya Louigie C. All rights reserved.</p>
-        <a href="#home">Back to Top ↑</a>
-    </footer>
+    <!-- EDUCATION -->
+    <section id="education" class="content-section section-shell section-dark">
+      <div class="section-heading reveal">
+        <p class="section-index">02 / LEVEL SELECT</p>
+        <h2>MY <span>LEVELS</span> CLEARED</h2>
+        <p>Progress is made one stage at a time.</p>
+      </div>
 
-    <script src="script.js"></script>
+      <div class="timeline">
+        <article class="level-card reveal">
+          <span class="level-badge">LV. 04</span>
+          <div>
+            <p class="level-year">2023 — 2027</p>
+            <h3>College</h3>
+            <h4>ICCT Colleges</h4>
+            <p>Bachelor of Science in Computer Engineering</p>
+          </div>
+          <span class="level-status">IN PROGRESS</span>
+        </article>
+
+        <article class="level-card reveal">
+          <span class="level-badge">LV. 03</span>
+          <div>
+            <p class="level-year">2021 — 2023</p>
+            <h3>Senior High School</h3>
+            <h4>Pantay Integrated High School</h4>
+            <p>STEM Strand</p>
+          </div>
+          <span class="level-status cleared">CLEARED ✓</span>
+        </article>
+
+        <article class="level-card reveal">
+          <span class="level-badge">LV. 02</span>
+          <div>
+            <p class="level-year">2017 — 2021</p>
+            <h3>Junior High School</h3>
+            <h4>Kapayapaan Integrated High School</h4>
+          </div>
+          <span class="level-status cleared">CLEARED ✓</span>
+        </article>
+
+        <article class="level-card reveal">
+          <span class="level-badge">LV. 01</span>
+          <div>
+            <p class="level-year">2013 — 2017</p>
+            <h3>Elementary</h3>
+            <h4>San Ramon Elementary School</h4>
+          </div>
+          <span class="level-status cleared">CLEARED ✓</span>
+        </article>
+      </div>
+    </section>
+
+    <!-- INTERESTS -->
+    <section id="interests" class="content-section section-shell">
+      <div class="section-heading reveal">
+        <p class="section-index">03 / BONUS STAGE</p>
+        <h2>POWER-UPS & <span>INTERESTS</span></h2>
+        <p>Things that keep my curiosity charged.</p>
+      </div>
+
+      <div class="interest-grid">
+        <article class="interest-card reveal">
+          <span class="interest-icon">⌨</span>
+          <span class="card-number">BONUS 01</span>
+          <h3>Coding</h3>
+          <p>Learning programming and creating applications.</p>
+          <span class="card-arrow">↗</span>
+        </article>
+
+        <article class="interest-card reveal">
+          <span class="interest-icon">⚙</span>
+          <span class="card-number">BONUS 02</span>
+          <h3>Technology</h3>
+          <p>Exploring computer hardware and new technologies.</p>
+          <span class="card-arrow">↗</span>
+        </article>
+
+        <article class="interest-card reveal">
+          <span class="interest-icon">🎮</span>
+          <span class="card-number">BONUS 03</span>
+          <h3>Gaming</h3>
+          <p>Playing games and exploring digital worlds.</p>
+          <span class="card-arrow">↗</span>
+        </article>
+
+        <article class="interest-card reveal">
+          <span class="interest-icon">♫</span>
+          <span class="card-number">BONUS 04</span>
+          <h3>Music</h3>
+          <p>Listening to music during my free time.</p>
+          <span class="card-arrow">↗</span>
+        </article>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="content-section section-shell section-dark">
+      <div class="section-heading reveal">
+        <p class="section-index">04 / EQUIPMENT MENU</p>
+        <h2>MY <span>LOADOUT</span></h2>
+        <p>Tools and abilities I'm building up.</p>
+      </div>
+
+      <div class="skills-panel reveal">
+        <div class="skills-panel-head">
+          <span>SKILL INVENTORY</span>
+          <span>10 ITEMS FOUND</span>
+        </div>
+
+        <div class="skill-list">
+          <div class="skill-item">
+            <span class="skill-symbol">▣</span>
+            HTML <span class="skill-type">WEB</span>
+            <span class="skill-xp"><i style="--xp:82%"></i></span>
+          </div>
+
+          <div class="skill-item">
+            <span class="skill-symbol">▣</span>
+            CSS <span class="skill-type">WEB</span>
+            <span class="skill-xp"><i style="--xp:76%"></i></span>
+          </div>
+
+          <div class="skill-item">
+            <span class="skill-symbol">⌘</span>
+            JavaScript <span class="skill-type">WEB</span>
+            <span class="skill-xp"><i style="--xp:58%"></i></span>
+          </div>
+
+          <div class="skill-item">
+            <span class="skill-symbol">☕</span>
+            Java <span class="skill-type">CODE</span>
+            <span class="skill-xp"><i style="--xp:64%"></i></span>
+          </div>
+
+          <div class="skill-item">
+            <span class="skill-symbol">⌬</span>
+            C++ <span class="skill-type">CODE</span>
+            <span class="skill-xp"><i style="--xp:52%"></i></span>
+          </div>
+
+          <div class="skill-item">
+            <span class="skill-symbol">▤</span>
+            AutoCAD <span class="skill-type">DESIGN</span>
+            <span class="skill-xp"><i style="--xp:50%"></i></span>
+          </div>
+
+          <div class="skill-item">
+            <span class="skill-symbol">⑂</span>
+            GitHub <span class="skill-type">TOOLS</span>
+            <span class="skill-xp"><i style="--xp:68%"></i></span>
+          </div>
+
+          <div class="skill-item">
+            <span class="skill-symbol">⌁</span>
+            Microcontrollers <span class="skill-type">HARDWARE</span>
+            <span class="skill-xp"><i style="--xp:45%"></i></span>
+          </div>
+
+          <div class="skill-item">
+            <span class="skill-symbol">◇</span>
+            Problem Solving <span class="skill-type">CORE</span>
+            <span class="skill-xp"><i style="--xp:72%"></i></span>
+          </div>
+
+          <div class="skill-item">
+            <span class="skill-symbol">♧</span>
+            Teamwork <span class="skill-type">CORE</span>
+            <span class="skill-xp"><i style="--xp:78%"></i></span>
+          </div>
+        </div>
+
+        <p class="skills-note">
+          * Skill bars are visual estimates — update them to match your actual experience.
+        </p>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="content-section section-shell">
+      <div class="section-heading reveal">
+        <p class="section-index">05 / MISSION SELECT</p>
+        <h2>ACADEMIC <span>MISSIONS</span></h2>
+        <p>Projects, experiments, and checkpoints from my learning journey.</p>
+      </div>
+
+      <div class="mission-grid">
+        <article class="mission-card reveal">
+          <div class="mission-art art-purple">
+            <span class="mission-icon">▤</span>
+            <span class="mission-id">MISSION_001</span>
+            <div class="art-grid"></div>
+          </div>
+
+          <div class="mission-content">
+            <div class="mission-meta">
+              <span>JAVA</span>
+              <span>DESKTOP APP</span>
+            </div>
+            <h3>Library Management System</h3>
+            <p>
+              A Java desktop application for organizing book records
+              and managing borrowing and returning.
+            </p>
+            <div class="tag-row">
+              <span>Java</span>
+              <span>Swing</span>
+            </div>
+            <a
+              href="https://github.com/mutyalouigie-collab"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mission-link"
+            >
+              EXPLORE PROJECT <span>↗</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="mission-card reveal">
+          <div class="mission-art art-cyan">
+            <span class="mission-icon">⌘</span>
+            <span class="mission-id">MISSION_002</span>
+            <div class="art-grid"></div>
+          </div>
+
+          <div class="mission-content">
+            <div class="mission-meta">
+              <span>WEB DEV</span>
+              <span>WEBSITE</span>
+            </div>
+            <h3>Event Management Website</h3>
+            <p>
+              A school website project designed to present event
+              information in an organized and accessible way.
+            </p>
+            <div class="tag-row">
+              <span>HTML</span>
+              <span>CSS</span>
+              <span>JavaScript</span>
+            </div>
+            <a
+              href="https://github.com/mutyalouigie-collab"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mission-link"
+            >
+              EXPLORE PROJECT <span>↗</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="mission-card reveal">
+          <div class="mission-art art-orange">
+            <span class="mission-icon">✧</span>
+            <span class="mission-id">MISSION_003</span>
+            <div class="art-grid"></div>
+          </div>
+
+          <div class="mission-content">
+            <div class="mission-meta">
+              <span>IN DEVELOPMENT</span>
+              <span>ACADEMIC</span>
+            </div>
+            <h3>Next Project</h3>
+            <p>
+              Have another project? Replace this card with its purpose,
+              the tools used, and what you learned.
+            </p>
+            <div class="tag-row">
+              <span>Technology</span>
+              <span>Academic</span>
+            </div>
+            <a
+              href="https://github.com/mutyalouigie-collab"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mission-link"
+            >
+              VIEW GITHUB <span>↗</span>
+            </a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="content-section section-shell contact-section">
+      <div class="contact-decoration" aria-hidden="true">
+        CONNECT<br>_PLAYER
+      </div>
+
+      <div class="section-heading reveal">
+        <p class="section-index">06 / PLAYER CONNECTION</p>
+        <h2>LET'S <span>CONNECT</span></h2>
+        <p>Got an idea, a project, or just want to say hi? Send a signal.</p>
+      </div>
+
+      <div class="contact-grid reveal">
+        <a href="mailto:mutyalouigie@gmail.com" class="contact-card">
+          <span class="contact-icon">✉</span>
+          <span>
+            <small>DROP A MESSAGE</small>
+            <strong>Email</strong>
+            <em>mutyalouigie@gmail.com</em>
+          </span>
+          <b>↗</b>
+        </a>
+
+        <a
+          href="https://github.com/mutyalouigie-collab"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="contact-card"
+        >
+          <span class="contact-icon">⌘</span>
+          <span>
+            <small>CODE REPOSITORIES</small>
+            <strong>GitHub</strong>
+            <em>Visit my profile</em>
+          </span>
+          <b>↗</b>
+        </a>
+
+        <a
+          href="https://www.linkedin.com/in/mutya-louigie-c-1b01a0442/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="contact-card"
+        >
+          <span class="contact-icon">in</span>
+          <span>
+            <small>PRO NETWORK</small>
+            <strong>LinkedIn</strong>
+            <em>Connect with me</em>
+          </span>
+          <b>↗</b>
+        </a>
+
+        <a
+          href="https://www.facebook.com/louigiemutyaaa/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="contact-card"
+        >
+          <span class="contact-icon">f</span>
+          <span>
+            <small>SOCIAL FEED</small>
+            <strong>Facebook</strong>
+            <em>Visit my profile</em>
+          </span>
+          <b>↗</b>
+        </a>
+      </div>
+
+      <div class="end-card reveal">
+        <span class="end-star">✦</span>
+        <p>THANKS FOR PLAYING</p>
+        <span>THE NEXT LEVEL STARTS NOW.</span>
+        <a href="#home" class="back-top">↑ BACK TO TOP</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <a class="footer-brand" href="#home">PLAYER<span>_ONE</span></a>
+
+    <p>
+      © <span id="year"></span> Mutya Louigie C. ALL RIGHTS RESERVED.
+    </p>
+
+    <p class="footer-status">
+      <span class="status-dot"></span>
+      MADE WITH CURIOSITY + CAFFEINE
+    </p>
+  </footer>
+
+  <!-- SOUND CONTROL AND NOTIFICATION -->
+  <button
+    class="sound-toggle"
+    id="sound-toggle"
+    aria-label="Toggle interface sound"
+    title="Toggle interface sound"
+  >
+    ♪ <span>SOUND: OFF</span>
+  </button>
+
+  <div class="toast" id="toast" role="status" aria-live="polite">
+    PLAYER READY
+  </div>
 </body>
 </html>
