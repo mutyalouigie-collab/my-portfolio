@@ -2033,3 +2033,6 @@ footer .footer-status {
     margin-bottom: 3px;
   }
 }
+.scanlines {
+    display: none !important;
+}
