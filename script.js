@@ -223,68 +223,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
  
   // BACKGROUND MUSIC + SOUND TOGGLE
-  const melody = [
-    659, 784, 988, 784,
-    523, 659, 784, 659,
-    587, 698, 880, 698,
-    494, 587, 698, 587
-  ];
+ 
+ 
+const backgroundMusic = document.querySelector('#background-music');
 
-  let melodyIndex = 0;
-  let musicTimer = null;
+soundButton.addEventListener('click', async () => {
+  soundEnabled = !soundEnabled;
 
-  soundButton.addEventListener('click', async () => {
-    soundEnabled = !soundEnabled;
+  soundButton.innerHTML = soundEnabled
+    ? '♫ <span>SOUND: ON</span>'
+    : '♪ <span>SOUND: OFF</span>';
 
-    soundButton.innerHTML = soundEnabled
-      ? '♫ <span>SOUND: ON</span>'
-      : '♪ <span>SOUND: OFF</span>';
-
-    soundButton.setAttribute(
-      'aria-label',
-      soundEnabled
-        ? 'Turn interface sound off'
-        : 'Turn interface sound on'
-    );
-
-    if (soundEnabled) {
-      try {
-        audioContext ||= new (
-          window.AudioContext ||
-          window.webkitAudioContext
-        )();
-
-        if (audioContext.state === 'suspended') {
-          await audioContext.resume();
-        }
-
-        playTone(660, 0.06);
-
-        // Start the looping 8-bit melody
-        clearInterval(musicTimer);
-
-        musicTimer = setInterval(() => {
-          if (soundEnabled) {
-            playTone(
-              melody[melodyIndex],
-              0.12
-            );
-
-            melodyIndex =
-              (melodyIndex + 1) % melody.length;
-          }
-        }, 160);
-
-        showToast('8-BIT MUSIC ENABLED');
-      } catch (error) {
-        showToast('AUDIO UNAVAILABLE');
-      }
-    } else {
-      clearInterval(musicTimer);
-      musicTimer = null;
-      showToast('MUSIC MUTED');
+  if (soundEnabled) {
+    try {
+      await backgroundMusic.play();
+      showToast('BACKGROUND MUSIC ON');
+    } catch (error) {
+      soundEnabled = false;
+      soundButton.innerHTML = '♪ <span>SOUND: OFF</span>';
+      showToast('CHECK AUDIO FILE');
     }
-  });
+  } else {
+    backgroundMusic.pause();
+    backgroundMusic.currentTime = 0;
+    showToast('MUSIC MUTED');
+  }
+});
+
 
 
   // ARCADE NOTIFICATION
