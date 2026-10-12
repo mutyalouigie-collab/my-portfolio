@@ -2037,27 +2037,6 @@ footer .footer-status {
     display: none !important;
 }
 
-/* REMOVE SCANLINES FROM THE ENTIRE WEBSITE */
-.scanlines,
-.scanlines::before,
-.scanlines::after {
-  display: none !important;
-  background: none !important;
-  opacity: 0 !important;
-}
-
-/* REMOVE POSSIBLE OVERLAYS FROM THE PORTRAIT */
-.portrait-frame::before,
-.portrait-frame::after,
-.portrait-frame img::before,
-.portrait-frame img::after {
-  content: none !important;
-  display: none !important;
-  background: none !important;
-  animation: none !important;
-  filter: none !important;
-}
-
 /* Remove horizontal scanline effects from the profile picture */
 .portrait,
 .portrait img {
@@ -2076,3 +2055,5 @@ footer .footer-status {
   background: none !important;
   animation: none !important;
 }
+
+
