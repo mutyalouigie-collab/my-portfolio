@@ -75,18 +75,11 @@ button:focus-visible {
 
 /* ================= SCANLINES ================= */
 
+
 .scanlines {
-  position: fixed;
-  inset: 0;
-  z-index: 1000;
-  pointer-events: none;
-  opacity: 0.12;
-  background: repeating-linear-gradient(
-    to bottom,
-    transparent 0 3px,
-    #000 4px
-  );
+  display: none !important;
 }
+
 
 .cursor-glow {
   position: fixed;
