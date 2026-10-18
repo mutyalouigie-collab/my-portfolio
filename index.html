@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-
+<link rel="stylesheet" href="pokemon-game.css">
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
 </head>
@@ -623,7 +623,133 @@
       </div>
     </section>
   </main>
+<section id="arcade" class="content-section section-shell section-dark">
+  <div class="section-heading reveal">
+    <p class="section-index">07 / BONUS STAGE</p>
+    <h2>HOENN <span>TRAIL</span></h2>
+    <p>Walk through the tall grass, meet wild Pokémon, and catch 'em all.</p>
+  </div>
 
+  <article class="terminal-card pg-card reveal">
+    <div class="window-bar">
+      <div class="window-dots"><i></i><i></i><i></i></div>
+      <span>hoenn_trail.exe</span>
+      <span class="window-code">GAME</span>
+    </div>
+
+    <div class="pg-body" id="pg-game" tabindex="0" aria-label="Pokémon style mini game">
+      <div class="pg-screen" id="pg-screen">
+        <canvas class="pg-canvas" id="pg-canvas" width="480" height="320"></canvas>
+
+        <div class="pg-ui" id="pg-ui">
+
+          <!-- HUD (map) -->
+          <div class="pg-hud" id="pg-hud" hidden>
+            <div class="pg-hud-lead">
+              <span id="pg-hud-lead"></span>
+              <div class="pg-hp"><i id="pg-hud-bar"></i></div>
+            </div>
+            <div class="pg-hud-items" id="pg-hud-items"></div>
+          </div>
+
+          <!-- TITLE -->
+          <div class="pg-overlay pg-title" id="pg-title">
+            <p class="pg-kicker">POCKET ADVENTURE</p>
+            <h3 class="pg-logo">HOENN<br><span>TRAIL</span></h3>
+            <div class="pg-title-btns">
+              <button type="button" class="pg-btn" id="pg-new">▶ NEW GAME</button>
+              <button type="button" class="pg-btn pg-btn-alt" id="pg-continue" hidden>CONTINUE</button>
+            </div>
+            <p class="pg-tiny">ARROWS / WASD TO MOVE · P = PARTY</p>
+          </div>
+
+          <!-- STARTER SELECT -->
+          <div class="pg-overlay pg-starter" id="pg-starter" hidden>
+            <p class="pg-kicker">CHOOSE YOUR PARTNER</p>
+            <div class="pg-starter-list" id="pg-starter-list"></div>
+          </div>
+
+          <!-- PARTY -->
+          <div class="pg-overlay pg-party" id="pg-party" hidden>
+            <p class="pg-kicker" id="pg-party-title">PARTY</p>
+            <div class="pg-party-list" id="pg-party-list"></div>
+            <div class="pg-party-foot">
+              <span id="pg-box-count"></span>
+              <button type="button" class="pg-btn pg-btn-small" id="pg-party-close">◀ BACK</button>
+            </div>
+          </div>
+
+          <!-- BATTLE -->
+          <div class="pg-battle" id="pg-battle" hidden>
+            <div class="pg-b-field">
+              <div class="pg-plat pg-plat-foe"></div>
+              <div class="pg-plat pg-plat-ally"></div>
+
+              <div class="pg-b-box pg-b-foe">
+                <div class="pg-b-name"><b id="pg-foe-name"></b><span id="pg-foe-lv"></span></div>
+                <div class="pg-hp"><i id="pg-foe-hp"></i></div>
+              </div>
+
+              <div class="pg-sprite pg-b-sprite pg-b-foe-sprite" id="pg-foe-sprite"></div>
+              <div class="pg-sprite pg-b-sprite pg-b-ally-sprite" id="pg-ally-sprite"></div>
+
+              <div class="pg-b-box pg-b-ally">
+                <div class="pg-b-name"><b id="pg-ally-name"></b><span id="pg-ally-lv"></span></div>
+                <div class="pg-hp"><i id="pg-ally-hp"></i></div>
+                <div class="pg-hp-text" id="pg-ally-hptext"></div>
+                <div class="pg-xp"><i id="pg-ally-xp"></i></div>
+              </div>
+            </div>
+
+            <div class="pg-b-bottom">
+              <div class="pg-b-msg" id="pg-msg"></div>
+
+              <div class="pg-b-menu">
+                <div class="pg-panel pg-panel-main" id="pg-panel-main" hidden>
+                  <button type="button" data-act="fight">FIGHT</button>
+                  <button type="button" data-act="bag">BAG</button>
+                  <button type="button" data-act="party">POKéMON</button>
+                  <button type="button" data-act="run">RUN</button>
+                </div>
+
+                <div class="pg-panel pg-panel-moves" id="pg-panel-moves" hidden></div>
+
+                <div class="pg-panel pg-panel-bag" id="pg-panel-bag" hidden>
+                  <button type="button" data-act="potion">POTION <small id="pg-potion-n"></small></button>
+                  <button type="button" data-act="ball">POKé BALL <small id="pg-ball-n"></small></button>
+                  <button type="button" data-act="back" class="pg-back">◀ BACK</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pg-flash" id="pg-flash"></div>
+          <div class="pg-toast" id="pg-toast"></div>
+        </div>
+      </div>
+
+      <!-- CONTROLS (mobile friendly) -->
+      <div class="pg-controls">
+        <div class="pg-dpad" aria-label="Directional pad">
+          <button type="button" data-dir="up" class="pg-d-up" aria-label="Up">▲</button>
+          <button type="button" data-dir="left" class="pg-d-left" aria-label="Left">◀</button>
+          <button type="button" data-dir="right" class="pg-d-right" aria-label="Right">▶</button>
+          <button type="button" data-dir="down" class="pg-d-down" aria-label="Down">▼</button>
+        </div>
+
+        <p class="pg-hint">
+          Click the game first, then use <b>Arrow keys / WASD</b>.<br>
+          Tall grass = wild Pokémon. Visit the <b>HEAL</b> house to restore your team.
+        </p>
+
+        <div class="pg-side-btns">
+          <button type="button" class="pg-btn pg-btn-small" id="pg-open-party">PARTY</button>
+          <button type="button" class="pg-btn pg-btn-small pg-btn-alt" id="pg-reset">RESET</button>
+        </div>
+      </div>
+    </div>
+  </article>
+</section>
   <!-- FOOTER -->
   <footer>
     <a class="footer-brand" href="#home">PLAYER<span>_ONE</span></a>
@@ -651,5 +777,6 @@
   <div class="toast" id="toast" role="status" aria-live="polite">
     PLAYER READY
   </div>
+  <script src="pokemon-game.js" defer></script>
 </body>
 </html>
