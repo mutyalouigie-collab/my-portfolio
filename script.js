@@ -904,7 +904,8 @@ soundButton.addEventListener('click', async () => {
   els.partyClose.addEventListener('click', () => closeParty(null));
 
   async function viewParty() {
-    if (mode !== 'map') return;
+  if (mode === 'battle') return showToast('Use the POKéMON button during battle.');
+  if (mode !== 'map') return showToast('Start the game first!');
     mode = 'menu';
     held = [];
     await openParty('view');
@@ -1590,18 +1591,31 @@ soundButton.addEventListener('click', async () => {
     else showStarters();
   });
 
-  els.reset.addEventListener('click', () => {
-    if (mode !== 'map') return;
-    if (!confirm('Reset the game and delete your save?')) return;
-    try { localStorage.removeItem(SAVE_KEY); } catch (_) { /* ignore */ }
-    held = [];
-    party = []; box = []; dex = new Set();
-    player.x = SPAWN.x; player.y = SPAWN.y; player.moving = false;
-    els.hud.hidden = true;
-    els.btnContinue.hidden = true;
-    els.title.hidden = false;
-    mode = 'title';
-  });
+  let resetArmed = false, resetTimer;
+els.reset.addEventListener('click', () => {
+  if (mode === 'battle') return showToast('Finish the battle first!');
+  if (mode === 'menu') return showToast('Close the party screen first.');
+  if (!hasSave() && mode !== 'map') return showToast('Nothing to reset yet.');
+
+  if (!resetArmed) {
+    resetArmed = true;
+    showToast('Tap RESET again to delete your save', 3000);
+    clearTimeout(resetTimer);
+    resetTimer = setTimeout(() => { resetArmed = false; }, 3000);
+    return;
+  }
+  resetArmed = false;
+
+  try { localStorage.removeItem(SAVE_KEY); } catch (_) { /* ignore */ }
+  held = [];
+  party = []; box = []; dex = new Set();
+  player.x = SPAWN.x; player.y = SPAWN.y; player.moving = false;
+  els.hud.hidden = true;
+  els.starter.hidden = true;
+  els.btnContinue.hidden = true;
+  els.title.hidden = false;
+  mode = 'title';
+});
 
   els.btnContinue.hidden = !hasSave();
   requestAnimationFrame(frame);
