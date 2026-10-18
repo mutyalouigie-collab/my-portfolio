@@ -2486,3 +2486,12 @@ footer .footer-status {
   .site-header nav { margin-left: 0; }
   .menu-toggle { margin-left: auto; position: relative; z-index: 2; }
 }
+@media (max-width: 760px) {
+  .site-header nav { margin-left: 0; }
+  .menu-toggle {
+    margin-left: auto;
+    position: relative;
+    z-index: 5;
+    touch-action: manipulation;
+  }
+}

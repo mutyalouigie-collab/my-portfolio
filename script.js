@@ -1,4 +1,6 @@
-document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener('DOMContentLoaded', () => {
+  if (window.__portfolioReady) return;
+  window.__portfolioReady = true;
   const $ = (selector, root = document) =>
     root.querySelector(selector);
 
